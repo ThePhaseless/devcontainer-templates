@@ -2,6 +2,9 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
 {
   "name": "Flutter",
+  "build": {
+    "dockerfile": "./Dockerfile"
+  },
   "customizations": {
     "vscode": {
       "extensions": ["Dart-Code.flutter"],
