@@ -1,0 +1,9 @@
+{
+  "id": "flutter",
+  "version": "1.0.0",
+  "name": "Flutter",
+  "description": "Fully featured Linux/Web/Android Flutter development environment",
+  "documentationURL": "https://github.com/ThePhaseless/devcontainer-templates/tree/main/src/flutter",
+  "licenseURL": "https://github.com/ThePhaseless/devcontainer-templates/blob/main/LICENSE",
+  "platforms": ["Any"]
+}
