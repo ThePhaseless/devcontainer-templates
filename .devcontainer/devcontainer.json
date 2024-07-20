@@ -1,6 +1,6 @@
 // More info: https://containers.dev/implementors/json_reference/
 {
-	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-18-bullseye",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:latest",
 	"features": {
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
 	},
@@ -8,7 +8,8 @@
 		"vscode": {
 			"extensions": [
 				"mads-hartmann.bash-ide-vscode",
-				"dbaeumer.vscode-eslint"
+				"dbaeumer.vscode-eslint",
+				"github.vscode-github-actions"
 			]
 		}
 	},
