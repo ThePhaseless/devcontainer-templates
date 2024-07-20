@@ -1,14 +1,4 @@
-FROM eclipse-temurin as jdk
-
 FROM mcr.microsoft.com/devcontainers/base:debian
-
-
-# Install Google Chrome
-RUN wget https://dl-ssl.google.com/linux/linux_signing_key.pub -O /tmp/google.pub
-RUN gpg --no-default-keyring --keyring /etc/apt/keyrings/google-chrome.gpg --import /tmp/google.pub
-RUN echo 'deb [arch=amd64 signed-by=/etc/apt/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
-RUN sudo apt-get update
-RUN sudo apt-get install google-chrome-stable -y
 
 # Get latest Android SDK
 ENV ANDROID_HOME=/opt/android-sdk-linux
@@ -22,7 +12,7 @@ ENV PATH="${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tool
 
 # Get latest Java SDK
 ENV JAVA_HOME=/opt/java/openjdk
-COPY --from=eclipse-temurin:21 $JAVA_HOME $JAVA_HOME
+COPY --from=eclipse-temurin:latest $JAVA_HOME $JAVA_HOME
 ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
 # Get latest Flutter
