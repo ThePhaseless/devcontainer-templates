@@ -33,6 +33,7 @@ jobs:
       - name: Get devcontainer folders
         id: devcontainer-folders
         run: echo "folders=$(ls src | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
+
   build:
     runs-on: ubuntu-latest
     needs: list-files
@@ -81,6 +82,8 @@ jobs:
         uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/${{ matrix.folder }}
+          tags: |
+            type=raw,value=latest
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
@@ -90,7 +93,7 @@ jobs:
         with:
           context: src/${{ matrix.folder }}
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}, latest
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
